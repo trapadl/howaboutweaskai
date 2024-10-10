@@ -21,7 +21,7 @@ function storeLink(id, longUrl) {
 }
 
 function getShortUrl(id, key) {
-    return `${window.location.origin}/redirect.html?id=${id}&key=${key}`;
+    return `${window.location.origin}/${id}/${key}`;
 }
 
 document.getElementById('questionForm').addEventListener('submit', function(e) {
