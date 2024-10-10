@@ -20,8 +20,31 @@ function storeLink(id, longUrl) {
     return key;
 }
 
-function getShortUrl(id, key) {
-    return `${window.location.origin}/${id}/${key}`;
+function generateShortUrl(question) {
+    const encodedQuestion = encodeURIComponent(question);
+    const baseUrl = "https://chat.openai.com/?q=Hey,+i+just+asked+my+friend+a+silly+question:+%22";
+    const suffix = "%22+but+then+I+realised+I+could+just+ask+ai.+Please+answer+my+question,+but+weave+into+it+teachings+about+when+its+best+to+ask+an+ai+a+question+vs+asking+a+friend+the+question";
+    const longUrl = baseUrl + encodedQuestion + suffix;
+    
+    // Encode the entire URL
+    const encodedUrl = btoa(longUrl).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
+    return `${window.location.origin}/${encodedUrl}`;
+}
+
+document.getElementById('questionForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const question = document.getElementById('question').value;
+    const shortUrl = generateShortUrl(question);
+    
+    document.getElementById('generatedLink').value = shortUrl;
+    document.getElementById('result').classList.remove('hidden');
+});
+
+function copyLink() {
+    const linkInput = document.getElementById('generatedLink');
+    linkInput.select();
+    document.execCommand('copy');
+    alert('Link copied to clipboard!');
 }
 
 document.getElementById('questionForm').addEventListener('submit', function(e) {
