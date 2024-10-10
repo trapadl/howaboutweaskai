@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How about we ask AI?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>How about we ask AI?</h1>
+        <p class="instruction">How about we show your friend AI can answer the following question:</p>
+        <form id="questionForm">
+            <div class="input-group">
+                <input type="text" id="question" name="question" placeholder="Enter your question" required>
+                <button type="submit" class="button-3d">Generate Link</button>
+            </div>
+        </form>
+        <div id="result" class="hidden">
+            <div class="input-group">
+                <input type="text" id="generatedLink" readonly>
+                <button onclick="copyLink()" class="button-3d">Copy</button>
+            </div>
+            <p class="expiry-notice">This link will expire in 24 hours.</p>
+        </div>
+    </div>
+
+    <div id="adBanner">
+        <p>Google Ad will be placed here</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
